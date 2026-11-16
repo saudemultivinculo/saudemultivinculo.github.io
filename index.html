@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="theme-color" content="#0f766e"><link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNjQgNjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHJ4PSIxNiIgZmlsbD0iIzBmNzY2ZSIvPjxwYXRoIGQ9Ik0zMiA0OUMxOSA0MCAxNCAzMyAxNCAyNi41IDE0IDIxIDE4IDE3LjUgMjIuOCAxNy41YzMuNSAwIDcgMiA5LjIgNS41IDIuMi0zLjUgNS43LTUuNSA5LjItNS41IDQuOCAwIDguOCAzLjUgOC44IDkgMCA2LjUtNSAxMy41LTE4IDIyLjV6IiBmaWxsPSIjZmZmIi8+PHBhdGggZD0iTTE3IDMzaDEwbDMtNiA1IDExIDMtNWg5IiBmaWxsPSJub25lIiBzdHJva2U9IiMwZjc2NmUiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Ficha inicial · Saúde Multivínculo</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+[hidden]{display:none!important}body{margin:0}
+/* Layout: coluna única, cartões por bloco, toque grande para celular */
+:root{--bg:#f4f7f6;--card:#ffffff;--fg:#14262b;--muted:#587076;--line:#d5e0df;--accent:#0f766e;--accent-fg:#ffffff;--warn-bg:#fff4e0;--warn-fg:#7a4a00;--ok-bg:#e3f4ee;--font:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1a1d;--card:#15262a;--fg:#e6f0ef;--muted:#93aeb1;--line:#2a4246;--accent:#4fd1c5;--accent-fg:#06201e;--warn-bg:#3a2d12;--warn-fg:#f3cf8a;--ok-bg:#16352f;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1a1d;--card:#15262a;--fg:#e6f0ef;--muted:#93aeb1;--line:#2a4246;--accent:#4fd1c5;--accent-fg:#06201e;--warn-bg:#3a2d12;--warn-fg:#f3cf8a;--ok-bg:#16352f;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);font-size:16px;line-height:1.45;padding-block:20px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+main{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+h1{font-size:24px;line-height:1.2;margin:0;text-wrap:balance}
+.lead{color:var(--muted);margin:6px 0 0}
+section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:12px;min-width:0}
+h2{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0}
+.hint{font-size:14px;color:var(--muted);margin:0}
+label.f{display:flex;flex-direction:column;gap:4px;font-size:14px;font-weight:500}
+input[type=text],input[type=tel],input[type=number]{font:inherit;font-size:16px;padding:12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg);width:100%;min-width:0}
+input:focus-visible,button:focus-visible,.opt:has(input:focus-visible){outline:2px solid var(--accent);outline-offset:2px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px}
+.opt{display:flex;gap:10px;align-items:flex-start;padding:12px;border:1px solid var(--line);border-radius:8px;cursor:pointer;background:var(--bg);min-width:0}
+.opt input{width:22px;height:22px;margin:0;flex:none;accent-color:var(--accent)}
+.opt:has(input:checked){border-color:var(--accent);background:var(--ok-bg)}
+.opt span{min-width:0;overflow-wrap:anywhere}
+.opt small{display:block;color:var(--muted);font-size:13px}
+.note{background:var(--warn-bg);color:var(--warn-fg);border-radius:8px;padding:12px;font-size:14px}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+button,a.btn{font:inherit;font-weight:600;padding:14px 18px;border-radius:10px;border:1px solid var(--accent);background:var(--accent);color:var(--accent-fg);cursor:pointer;text-decoration:none;text-align:center;flex:1 1 200px}
+button.sec{background:transparent;color:var(--accent)}
+button:disabled{opacity:.5;cursor:not-allowed}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:12px;font-size:14px;margin:0;max-height:320px;overflow:auto}
+.msg{font-size:14px;color:var(--muted);min-height:1.2em}
+.brand{display:flex;gap:14px;align-items:center}
+.brand svg{flex:none}
+.brand b{display:block;font-size:18px;line-height:1.2}
+.brand span{display:block;color:var(--muted);font-size:14px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0;padding:0;list-style:none}
+.steps li{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:13px;line-height:1.3}
+.steps b{color:var(--accent)}
+#doclist ul{margin:4px 0 10px;padding-left:20px}#doclist li{margin:4px 0}
+.priv{font-size:13px;color:var(--muted);text-align:center;margin:0}
+</style>
+
+</head><body>
+<main>
+<header>
+  <div class="brand"><svg viewBox="0 0 64 64" width="56" height="56" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#0f766e"/><path d="M32 49C19 40 14 33 14 26.5 14 21 18 17.5 22.8 17.5c3.5 0 7 2 9.2 5.5 2.2-3.5 5.7-5.5 9.2-5.5 4.8 0 8.8 3.5 8.8 9 0 6.5-5 13.5-18 22.5z" fill="#fff"/><path d="M17 33h10l3-6 5 11 3-5h9" fill="none" stroke="#0f766e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Saúde Multivínculo</b><span>Organização fiscal para profissionais de saúde</span></div></div>
+  <h1 style="margin-top:18px">Ficha inicial</h1>
+  <p class="lead">Leva uns 3 minutos. Marque o que se aplica a você. Não precisa anexar nada agora: depois do envio, pedimos só os comprovantes dos itens marcados.</p>
+</header>
+<ol class="steps"><li><b>1.</b> Preencha a ficha</li><li><b>2.</b> Toque em "Gerar resumo"</li><li><b>3.</b> Envie pelo WhatsApp para Gilberto</li></ol>
+
+<section>
+  <h2>Quem é você</h2>
+  <label class="f">Nome completo<input id="nome" type="text" autocomplete="name"></label>
+  <label class="f">CPF<input id="cpf" type="text" inputmode="numeric" autocomplete="off" placeholder="000.000.000-00"></label>
+  <label class="f">WhatsApp<input id="tel" type="tel" autocomplete="tel" placeholder="(22) 99999-9999"></label>
+  <div class="hint">Profissão</div>
+  <div class="grid" id="prof"></div>
+  <label class="f">Conselho e número (se tiver)<input id="conselho" type="text" placeholder="Ex.: CRP 05/00000"></label>
+</section>
+
+<section>
+  <h2>De onde vem sua renda</h2>
+  <p class="hint">Marque todas as fontes, mesmo as pequenas. A análise só fica correta com o quadro completo.</p>
+  <div class="grid" id="fontes"></div>
+</section>
+
+<section>
+  <h2>Como os pacientes pagam</h2>
+  <div class="grid" id="pagto"></div>
+</section>
+
+<section>
+  <h2>Gastos da profissão</h2>
+  <p class="hint">Marque os que você tem. Nota ou recibo de cada um serão pedidos depois.</p>
+  <div class="grid" id="gastos"></div>
+  <div class="note">Transporte, combustível e deslocamento não entram no Livro Caixa. Despesa pessoal também não.</div>
+</section>
+
+<section>
+  <h2>Declaração anual</h2>
+  <p class="hint">Marque só se existir. Os comprovantes vêm em seguida.</p>
+  <div class="grid" id="anual"></div>
+  <label class="f" id="depwrap" hidden>Quantos dependentes?<input id="ndep" type="number" min="1" inputmode="numeric"></label>
+</section>
+
+<section>
+  <h2>Situação de hoje</h2>
+  <div class="grid" id="sit"></div>
+</section>
+
+<section>
+  <h2>Confirmação</h2>
+  <label class="opt"><input type="checkbox" id="ciente"><span>Informei todas as minhas fontes de renda. Sei que o trabalho é feito com o quadro completo.</span></label>
+  <div class="btns">
+    <button id="gerar" type="button">Gerar resumo</button>
+  </div>
+  <div class="msg" id="msg"></div>
+</section>
+
+<section id="docs" hidden>
+  <h2>Agora envie estes documentos</h2>
+  <p class="hint">Mande pelo mesmo WhatsApp, em foto nítida com a página inteira ou em PDF. Pode enviar agora ou nos próximos dias.</p>
+  <div id="doclist"></div>
+</section>
+
+<section id="saida" hidden>
+  <h2>Resumo para enviar</h2>
+  <pre id="resumo"></pre>
+  <div class="btns">
+    <a class="btn" id="wpp" href="#" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+    <button class="sec" id="copiar" type="button">Copiar texto</button>
+  </div>
+  <p class="hint">Se o WhatsApp não abrir, copie o texto e envie para (22) 99866-4249.</p>
+</section>
+<p class="priv">Seus dados não ficam guardados neste site. Só seguem para o WhatsApp se você tocar em enviar. Usamos seus dados apenas para analisar sua situação e prestar o serviço contratado. Você pode pedir a exclusão quando quiser.</p>
+</main>
+
+<script>
+const FONE='5522998664249';
+const G={
+prof:['Fonoaudióloga(o)','Psicóloga(o)','Fisioterapeuta','Dentista','Enfermeira(o)','Terapeuta ocupacional','Médica(o)','Outra'],
+fontes:[['Pacientes particulares','pagam direto a mim'],['Clínica ou empresa','repasse, RPA ou sem recibo'],['Prefeitura, concurso ou CLT','recebo holerite'],['Plano de saúde ou convênio',''],['Cooperativa',''],['Home care, plantões ou outros',''],['Aposentadoria, aluguel ou outra renda','']],
+pagto:['Pix','Dinheiro','Cartão (maquininha)','Transferência','Cheque'],
+gastos:['Aluguel de sala ou clínica','Condomínio, energia, água, internet, telefone do consultório','Material de consumo e testes','Anuidade do conselho, sindicato ou associação','Cursos, congressos e supervisão da profissão','Secretária, auxiliar ou funcionário','Limpeza e manutenção do consultório','Taxa de maquininha ou plataforma','Software, prontuário ou site','Divulgação e marketing','Contador ou serviços profissionais'],
+anual:['Dependentes','Despesas médicas, dentárias ou psicólogo (minhas ou de dependentes)','Escola, faculdade ou pós (minha ou de dependentes)','Plano de saúde individual','Previdência privada (PGBL)','Pensão alimentícia','Seguro, indenização ou herança','Venda ou compra de bem (imóvel, carro)'],
+sit:['Entreguei a declaração do ano passado','Tenho Carnê-Leão em atraso','Mudei de emprego este ano','Tive queda de renda','Tenho conta gov.br prata ou ouro']
+};
+function opt(id,t,s){return '<label class="opt"><input type="checkbox" id="'+id+'" data-t="'+t.replace(/"/g,'&quot;')+'"><span>'+t+(s?'<small>'+s+'</small>':'')+'</span></label>'}
+function fill(k,rows){document.getElementById(k).innerHTML=rows.map((r,i)=>{const t=Array.isArray(r)?r[0]:r,s=Array.isArray(r)?r[1]:'';return opt(k+i,t,s)}).join('')}
+for(const k in G)fill(k,G[k]);
+const $=id=>document.getElementById(id);
+function picked(k){return [...document.querySelectorAll('#'+k+' input:checked')].map(e=>e.dataset.t)}
+function syncDep(){const on=$('anual0').checked;$('depwrap').hidden=!on}
+$('anual0').addEventListener('change',syncDep);
+
+function docsList(){
+  const on=id=>{const e=$(id);return !!(e&&e.checked)};
+  const anyG=document.querySelectorAll('#gastos input:checked').length>0;
+  const D=[];
+  D.push(['Para todos','Documento com foto e CPF (frente e verso)']);
+  D.push(['Para todos','Comprovante de residência recente (conta de luz, água ou telefone)']);
+  D.push(['Para todos','Carteira do conselho profissional (frente e verso), se tiver']);
+  if(on('sit0'))D.push(['Declaração','Última declaração de IR: o arquivo da declaração e o recibo de entrega']);
+  if(on('fontes0'))D.push(['Pacientes particulares','Extratos de todas as contas em que você recebe dos pacientes (PDF do banco)']);
+  if(on('fontes1'))D.push(['Clínica ou empresa','Recibos (RPA) ou comprovantes de cada pagamento, e o informe de rendimentos do ano passado']);
+  if(on('fontes2'))D.push(['Prefeitura, concurso ou CLT','Contracheques dos últimos meses e informe de rendimentos do ano passado']);
+  if(on('fontes3'))D.push(['Plano de saúde ou convênio','Demonstrativo de pagamentos recebidos do plano']);
+  if(on('fontes4'))D.push(['Cooperativa','Informe de rendimentos e extrato dos repasses']);
+  if(on('fontes5'))D.push(['Home care, plantões ou outros','Recibos ou extratos que mostrem cada pagamento recebido']);
+  if(on('fontes6'))D.push(['Outra renda','Documento que comprove (informe, contrato de aluguel, extrato da aposentadoria)']);
+  if(anyG)D.push(['Gastos da profissão','Notas fiscais e recibos de cada gasto marcado, mês a mês']);
+  if(on('anual0'))D.push(['Dependentes','CPF e data de nascimento de cada dependente (foto do documento)']);
+  if(on('anual1'))D.push(['Despesas médicas','Notas ou recibos com nome, CPF ou CNPJ de quem recebeu, valor e data']);
+  if(on('anual2'))D.push(['Escola, faculdade ou pós','Comprovantes de pagamento ou informe da instituição']);
+  if(on('anual3'))D.push(['Plano de saúde individual','Informe de pagamentos do ano']);
+  if(on('anual4'))D.push(['Previdência privada (PGBL)','Informe de contribuições do ano']);
+  if(on('anual5'))D.push(['Pensão alimentícia','Decisão judicial ou acordo e comprovantes de pagamento']);
+  if(on('anual6'))D.push(['Seguro, indenização ou herança','Documento do recebimento e informe, se houver']);
+  if(on('anual7'))D.push(['Venda ou compra de bem','Contrato ou escritura e comprovantes de pagamento']);
+  if(on('sit1'))D.push(['Carnê-Leão em atraso','Guias já pagas, se houver, e a relação dos recebimentos do período']);
+  if(on('sit2'))D.push(['Mudança de emprego','Contracheque do vínculo anterior e do atual, e termo de rescisão, se houver']);
+  if(!on('sit4'))D.push(['Conta gov.br','Você não marcou prata ou ouro. Vamos te orientar a elevar o nível da conta']);
+  return D;
+}
+function docsFmt(D){let g='',o=[];D.forEach(([k,t])=>{if(k!==g){o.push('');o.push(k+':');g=k}o.push('[ ] '+t)});return o.join('\n')}
+function build(){
+  const L=[];
+  L.push('FICHA INICIAL');
+  L.push('Nome: '+($('nome').value||'-'));
+  L.push('CPF: '+($('cpf').value||'-'));
+  L.push('WhatsApp: '+($('tel').value||'-'));
+  L.push('Profissão: '+(picked('prof').join(', ')||'-'));
+  L.push('Conselho: '+($('conselho').value||'-'));
+  const sec=(t,k,extra)=>{const p=picked(k);L.push('');L.push(t+':');p.length?p.forEach(x=>L.push('[x] '+x+(extra&&extra[x]||''))):L.push('(nenhum)')};
+  sec('Fontes de renda','fontes');
+  sec('Pagamento dos pacientes','pagto');
+  sec('Gastos da profissão','gastos');
+  const ex={};ex[G.anual[0]]=$('ndep').value?' ('+$('ndep').value+')':'';
+  sec('Declaração anual','anual',ex);
+  sec('Situação de hoje','sit');
+  L.push('');L.push('Informei todas as fontes de renda: sim');L.push('');L.push('DOCUMENTOS A ENVIAR');L.push(docsFmt(docsList()).trim());
+  return L.join('\n');
+}
+function draft(){try{const d={};document.querySelectorAll('input').forEach(e=>{if(e.id==='cpf'||e.id==='tel')return;d[e.id]=e.type==='checkbox'?e.checked:e.value});localStorage.setItem('ficha-saude',JSON.stringify(d))}catch(e){}}
+function restore(){try{const d=JSON.parse(localStorage.getItem('ficha-saude')||'{}');for(const id in d){const e=$(id);if(e){if(e.type==='checkbox')e.checked=d[id];else e.value=d[id]}}syncDep()}catch(e){}}
+document.addEventListener('input',draft);document.addEventListener('change',draft);restore();
+$('gerar').addEventListener('click',()=>{
+  if(!$('nome').value.trim()||!$('cpf').value.trim()){$('msg').textContent='Preencha nome e CPF.';return}
+  if(!$('ciente').checked){$('msg').textContent='Marque a confirmação de que informou todas as rendas.';return}
+  $('msg').textContent='';try{localStorage.removeItem('ficha-saude')}catch(e){}
+  const t=build();$('resumo').textContent=t;$('saida').hidden=false;(function(){let g='',h='';docsList().forEach(([k,t])=>{if(k!==g){h+=(g?'</ul>':'')+'<div class="hint"><b>'+k+'</b></div><ul>';g=k}h+='<li>'+t+'</li>'});$('doclist').innerHTML=h+'</ul>';$('docs').hidden=false})();
+  $('wpp').href='https://wa.me/'+FONE+'?text='+encodeURIComponent(t);
+  $('docs').scrollIntoView({behavior:'smooth',block:'start'});
+});
+$('copiar').addEventListener('click',async()=>{
+  const t=$('resumo').textContent;
+  try{await navigator.clipboard.writeText(t);$('copiar').textContent='Copiado'}
+  catch(e){const r=document.createRange();r.selectNodeContents($('resumo'));const s=getSelection();s.removeAllRanges();s.addRange(r);$('copiar').textContent='Texto selecionado: copie'}
+});
+</script>
+</body></html>
